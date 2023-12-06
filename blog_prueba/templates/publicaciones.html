@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block blockname %}
+    
+    <h2>Publicaciones</h2>
+
+    
+    {% for publicacion in publicaciones %}
+      <!-- Card Publicación -->
+    <div class="card">
+      <div class="card-header">
+        {{publicacion.fecha}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{publicacion.titulo}}</h5>
+        <p class="card-text">{{publicacion.cuerpo}}</p>
+        <a href="#" class="btn btn-primary">Leer más</a>
+      </div>
+    </div>
+    {% endfor %}
+      
+
+{% endblock blockname %}
