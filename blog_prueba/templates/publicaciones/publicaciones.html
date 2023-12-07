@@ -13,6 +13,9 @@
       <div class="card-header">
         {{publicacion.fecha}}
         <span>
+          <!-- Icono de eliminar -->
+          <a href="{% url 'eliminar-publicacion' publicacion.id %}"><i class="fa-solid fa-trash"></i></a>
+          <!-- Icono de editar -->
           <a href="{% url 'modificar-publicacion' publicacion.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
         </span>
       </div>
