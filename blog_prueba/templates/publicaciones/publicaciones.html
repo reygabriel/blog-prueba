@@ -5,12 +5,16 @@
     
     <h2>Publicaciones</h2>
 
+    <a href="{% url 'publicar' %}" class="button">Publicar algo nuevo</a>
     
     {% for publicacion in publicaciones %}
       <!-- Card Publicación -->
     <div class="card">
       <div class="card-header">
         {{publicacion.fecha}}
+        <span>
+          <a href="{% url 'modificar-publicacion' publicacion.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
+        </span>
       </div>
       <div class="card-body">
         <h5 class="card-title">{{publicacion.titulo}}</h5>
