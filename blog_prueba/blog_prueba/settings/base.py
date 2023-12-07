@@ -15,9 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+# Defino nuevo modelo de usuario
+AUTH_USER_MODEL = 'usuarios.Usuario'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-$p6-rn5@7^js2g^bv(=0hz@l+)ht#t906db$oz44lnx1k!k)sz'
@@ -37,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'publicaciones'
+    'publicaciones',
+    'usuarios'
 ]
 
 MIDDLEWARE = [
