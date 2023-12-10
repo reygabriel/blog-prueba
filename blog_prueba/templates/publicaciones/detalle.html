@@ -19,6 +19,26 @@
       </div>
     </div>
   </div>
+  
+  <form method="post"> {% csrf_token %}
+    {{form}}
+    <button type="submit">Comentar</button>
+  </form>
+  <!-- Caja de comentarios -->
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      Comentarios
+    </div>
+    <ul class="list-group list-group-flush">
+
+      
+      {% for comentario in publicacion.comentarios.all %}
+      <strong>{{comentario.creador}}</strong>
+      <li class="list-group-item">{{comentario.texto}}</li>      
+      {% endfor %}
+  
+    </ul>
+  </div>
     
 {% endblock contenido %}
     

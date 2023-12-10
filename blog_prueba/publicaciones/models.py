@@ -23,3 +23,12 @@ class Publicacion(models.Model):
     
     def get_absolute_url(self):
         return reverse('publicaciones')
+    
+class Comentario(models.Model):
+    fecha = models.DateField(auto_now_add=True)
+    texto = models.TextField(max_length=100)
+    publicacion = models.ForeignKey(Publicacion, on_delete=models.CASCADE, related_name='comentarios')
+    creador = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='comentario')
+
+    def __str__(self):
+        return self.publicacion.titulo + '-' + self.creador.username

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Publicacion
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from .forms import PublicarForm, ActualizarForm
+from .forms import PublicarForm, ActualizarForm, ComentarioForm
 from django.urls import reverse
 
 # Create your views here.
@@ -72,3 +72,22 @@ class DetallePublicacionView(DetailView):
     model = Publicacion
     template_name = 'publicaciones/detalle.html'
     context_object_name = 'publicacion'
+
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = ComentarioForm()
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        publicacion = self.get_object()
+        form = ComentarioForm(request.POST)
+
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.creador_id = self.request.user.id
+            comentario.publicacion = publicacion
+            comentario.save()
+            return super().get(request)
+        else:
+            return super().get(request)
