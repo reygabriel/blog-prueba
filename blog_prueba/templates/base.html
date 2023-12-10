@@ -30,6 +30,18 @@
 								<a href="index.html" class="logo">
 									<span class="symbol"><img src="{% static 'images/logo.svg' %}" alt="" /></span><span class="title">MI BLOG RG</span>
 								</a>
+							<!-- User -->
+							<span style="position: fixed; right: 8em; top: 2em; font-weight: bold;";>
+
+								
+								{% if user.is_authenticated %}
+									<a href="">{{user.first_name}}</a>
+								{% else %}
+								<a href="{% url 'login' %}">Iniciar sesion</a>									
+								{% endif %}
+									
+
+							</span>	
 
 							<!-- Nav -->
 								<nav>
@@ -49,6 +61,9 @@
 							<li><a href="generic.html">Nosotros</a></li>
 							<li><a href="{% url 'publicaciones' %}">Publicaciones</a></li>
 							<li><a href="generic.html">Contacto</a></li>
+							<li><form method="post" action="{% url 'logout' %}">{% csrf_token %}
+								<button class="button primary" type="submit">Cerrar sesion</button>
+							</form></li>
 						</ul>
 					</nav>
 

@@ -5,13 +5,13 @@
     
     <h2>Publicaciones</h2>
 
-    <a href="{% url 'publicar' %}" class="button">Publicar algo nuevo</a>
+    <a href="{% url 'publicar' %}" class="button primary">Publicar algo nuevo</a>
     
     {% for publicacion in publicaciones %}
       <!-- Card Publicación -->
     <div class="card">
       <div class="card-header">
-        {{publicacion.fecha}}
+        {{publicacion.fecha}} - <strong>@{{publicacion.creador.username}}</strong>
         <span>
           <!-- Icono de eliminar -->
           <a href="{% url 'eliminar-publicacion' publicacion.id %}"><i class="fa-solid fa-trash"></i></a>
@@ -22,7 +22,7 @@
       <div class="card-body">
         <h5 class="card-title">{{publicacion.titulo}}</h5>
         <p class="card-text">{{publicacion.cuerpo}}</p>
-        <a href="#" class="btn btn-primary">Leer más</a>
+        <a href="{% url 'detalle-publicacion' publicacion.id %}" class="button">Leer más</a>
       </div>
     </div>
     {% endfor %}
