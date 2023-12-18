@@ -80,6 +80,9 @@ class DetallePublicacionView(DetailView):
         return context
     
     def post(self, request, *args, **kwargs):
+
+        if not self.request.user.is_authenticated:
+            return redirect('login')
         publicacion = self.get_object()
         form = ComentarioForm(request.POST)
 

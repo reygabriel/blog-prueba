@@ -9,7 +9,7 @@ class Usuario(AbstractUser):
     es_colaborador = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return self.first_name + " " + self.last_name + f'({self.username})'
     
     def get_absolute_url(self):
         return reverse('publicaciones')
