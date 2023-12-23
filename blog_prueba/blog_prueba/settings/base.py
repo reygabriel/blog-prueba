@@ -21,9 +21,6 @@ AUTH_USER_MODEL = 'usuarios.Usuario'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-$p6-rn5@7^js2g^bv(=0hz@l+)ht#t906db$oz44lnx1k!k)sz'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = []
 
 # Variables relacionadas al login
